@@ -12,10 +12,13 @@ import OrganizationUsers from './DashboardPages/Users';
 import OrganizationModeration from './DashboardPages/Moderation/Moderation';
 import OrganizationClasses from './DashboardPages/Classes';
 import { useSearchParams } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 const { TabPane } = Tabs;
 
+
 export default function OrganizationDashboard() {
+  const { orgId } = useParams();
+
   function OrgDashboardPage() {
     let list1 = [];
     Object.keys(OrgPages).forEach((page) => {
@@ -38,9 +41,9 @@ export default function OrganizationDashboard() {
     Moderation: ['/moderation', <OrganizationModeration />],
     Classrooms: ['/classes', <OrganizationClasses />],
   };
-  if (value.org === undefined) {
-    return NonOrgMember();
-  }
+  // if (value.org === undefined) {
+  //   return NonOrgMember();
+  // }
 
   const [searchParams, setSearchParams] = useSearchParams();
 

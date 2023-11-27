@@ -46,7 +46,9 @@ export default function Admin() {
         let userorgs = orgs.data.filter((org) => org.users.filter((user) => user.id === value.id).length > 0);
         return userorgs;
     }
+
     useEffect(() => {
+        console.log(orgList)
         getOrgs().then(data => setOrgList(data))
     }, []);
 
@@ -61,6 +63,7 @@ export default function Admin() {
 
     //click on an org tile
     function orgClick(id) {
+        console.log(orgList);
         const organization = orgList.find(org => org.id === id);
         if(organization){
             console.log("Clicked!");

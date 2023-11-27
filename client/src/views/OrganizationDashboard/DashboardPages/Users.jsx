@@ -8,7 +8,7 @@ export default function OrganizationUsers() {
 
   useEffect(() => {
     let classroomIds = [];
-    getOrgUsers(JSON.parse(sessionStorage.getItem("user")).organization.id).then((res) => {
+    getOrgUsers(JSON.parse(sessionStorage.getItem("user")).organizations[0].Name.id).then((res) => {
       if (res.data) {
         // res.data.classrooms.forEach((classroom) => {
         //   classroomIds.push(classroom.id);

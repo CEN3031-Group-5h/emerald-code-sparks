@@ -13,8 +13,10 @@ export default function OrganizationHome() {
 
   useEffect(() => {
     let classroomIds = [];
+    console.log(sessionStorage)
+
     getOrgUsers(
-      JSON.parse(sessionStorage.getItem('user')).organization.id
+      JSON.parse(sessionStorage.getItem('user')).organizations[0].Name.id
     ).then((res) => {
       if (res.data) {
         setOrg(res.data);

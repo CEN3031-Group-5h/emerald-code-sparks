@@ -23,6 +23,7 @@ function LessonForm() {
         const { name, value } = e.target;
         if (name.startsWith('question') || name.startsWith('answer')) {
           const index = parseInt(name.split('-')[1], 10);
+          console.log(index);
           const field = name.split('-')[0];
           setLesson(prevLesson => ({
             ...prevLesson,
@@ -45,15 +46,29 @@ function LessonForm() {
         e.preventDefault();
         
         const { title, standards, description, classroomMaterials, studentMaterials, questions } = lesson;
+        //ensure all fields are filled out
+        if(!title || !standards || !description || !classroomMaterials || !studentMaterials || !questions[0].question || !questions[0].answer){
+          alert("Error creating lesson, please fill out all fields");
+          return;
+        }
         const question1 = questions[0].question
         const question2 = questions[1].question
         const question3 = questions[2].question
-
+        
         const answer1 = questions[0].answer
         const answer2 = questions[1].answer
         const answer3 = questions[2].answer
-
-      
+        
+        //ensure all questions have an answer with them
+        if((question1 && !answer1) || (question2 && !answer2) || (question3 && !answer3)){
+          alert("Error creating lesson, question does not have a corresponding answer");
+          return;
+        }
+        //ensure all answers have a question attached
+        if((answer1 && !question1) || (answer2 && !question2) || (answer3 && !question3)){
+          alert("Error creating lesson, answer does not have a corresponding question");
+          return;
+        }
         try {
           await submitLessonData(
             title,
@@ -71,6 +86,19 @@ function LessonForm() {
           );
           
           console.log('Lesson submitted successfully');
+          //if successful, clear the input fields
+          setLesson({
+            title: '',
+            standards: '',
+            description: '',
+            classroomMaterials: '',
+            studentMaterials: '',
+            questions: [
+              { question: '', answer: '' },
+              { question: '', answer: '' },
+              { question: '', answer: '' }
+            ]
+          });
         } catch (error) {
           console.error('Error submitting lesson:', error);
         }

@@ -53,7 +53,7 @@ export const getAllOrgs = async () =>
 export const getOrgClasses = async (id) =>
         makeRequest({
             method: GET,
-            path: `${server}/organizations/${id}/classes`,
+            path: `${server}/organizations/${id}/classrooms`,
             auth: true,
             error: 'Faild to get list of org classes'
         });
@@ -207,7 +207,7 @@ export const getStudentClassroom = async () =>
     method: GET,
     path: `${server}/classrooms/student`,
     auth: true,
-    error: 'Classroom information could not be retrieved',
+    error: 'Classroom information (student) could not be retrieved',
   });
 
 export const getClassrooms = async (ids) =>
@@ -771,3 +771,39 @@ export const createClassroom = async (id, title) =>
         },
         error: 'Unable to create new classroom',
     });
+
+    export const submitLessonData = async (
+      title,
+      standards,
+      description,
+      classroomMaterials,
+      studentMaterials,
+      question1,
+      question2,
+      question3,
+      answer1,
+      answer2,
+      answer3,
+      identification
+    ) =>
+      makeRequest({
+        method: 'POST',
+        path: `${server}/lessons`,
+        data: {
+          title: title,
+          standards: standards,
+          description: description,
+          classroom: classroomMaterials,
+          student: studentMaterials,
+          question1: question1,
+          question2: question2,
+          question3: question3,
+          answer1: answer1,
+          answer2: answer2,
+          answer3: answer3,
+          identification: identification
+        },
+        auth: true,
+        error: 'Unable to submit lesson data',
+      });
+    

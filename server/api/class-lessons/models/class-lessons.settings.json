@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "class_lessons",
+  "info": {
+    "name": "ClassLessons",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "standards": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "classroomMaterials": {
+      "type": "text"
+    },
+    "studentMaterials": {
+      "type": "text"
+    },
+    "arduinoMaterials": {
+      "type": "text"
+    },
+    "identification": {
+      "type": "text"
+    }
+  }
+}

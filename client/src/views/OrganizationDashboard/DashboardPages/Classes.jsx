@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getOrgClasses, getClassrooms, createClassroom, deleteClassroom } from '../../../Utils/requests';
+import { getOrgClasses, getClassrooms, updateClassroomMentors, createClassroom, deleteClassroom, getClassroom, getOrgMentors } from '../../../Utils/requests';
 import {getCurrUser, useGlobalState} from '../../../Utils/userState';
 import { getOrgUsers, getOrg} from "../../../Utils/requests";
 import { message } from 'antd';
@@ -8,16 +8,19 @@ import DashboardDisplayCodeModal from '../../Mentor/Dashboard/DashboardDisplayCo
 import MentorSubHeader from '../../../components/MentorSubHeader/MentorSubHeader';
 import NavBar from '../../../components/NavBar/NavBar';
 import { useNavigate, useParams } from 'react-router-dom';
+import AddUserModal from "../../../components/AddUserModal/AddUserModal";
 //import { org } from '../Home';
 
 export default function OrganizationClasses(props) {
     const [classrooms, setClassrooms] = useState([]);
-    const [org, setOrg] = useState({});
     const orgUsers = getOrgUsers(props.id);
     const [user] = useGlobalState('currUser');
     const navigate = useNavigate();
     const newName = useRef();
     const newId = useRef();
+    const [modalClassroom, setModalClassroom] = useState({});
+    const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
+
     async function getClasses(id) {
         //let classes = await getOrgClasses(props.id);
         let org = await getOrg(id);
@@ -26,26 +29,32 @@ export default function OrganizationClasses(props) {
         setClassrooms(classes);
         return classes;
     }
+
+    const addMentor = async (classroom, name) => {
+        let org = await getOrg(props.id);
+        let new_mentor = org.data.mentors.find((m) => m.first_name === name);
+        if (new_mentor === undefined) {
+            message.error("Mentor not found");
+            return false;
+        } 
+        else {
+            if ("id" in classroom)
+            {
+                let mentors = (await getClassroom(classroom.id)).data.mentors;
+                mentors.push(new_mentor);
+                let res = await updateClassroomMentors(classroom.id, mentors);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+      }
+
     useEffect(() => {
         let classroomIds = [];
         let id = props.id;
         getClasses(id);
-        
-       /*getOrg(props.id).then((res) => {
-            if (res.data) {
-                 res.data.classrooms.forEach((classroom) => {
-                  classroomIds.push(classroom.id);
-                });
-                    getClassrooms(classroomIds).then((classrooms) => {
-                    setClassrooms(classrooms);
-                });
-                setOrg(res.data);
-                console.log(org);
-                console.log(res.data);
-            } else {
-                message.error(res.err);
-            }
-        });*/
     }, []);
 
     useEffect(() => {
@@ -71,6 +80,11 @@ export default function OrganizationClasses(props) {
             {/*<NavBar isMentor={true} />*/}
             <div id='main-header'>Welcome {user.name}</div>
             <MentorSubHeader title={'Your Classrooms'}></MentorSubHeader>
+            <AddUserModal
+                isOpen = {isAddUserModalOpen}
+                submitUser = {(val) => addMentor(modalClassroom, val)}
+                closeModal = {() => setIsAddUserModalOpen(false)}
+            />
             <div id='classrooms-container'>
                 <div id='dashboard-card-container'>
                     {classrooms.map((classroom) => (
@@ -81,13 +95,14 @@ export default function OrganizationClasses(props) {
                                 <button onClick={() => handleViewClassroom(classroom.id)}>
                                 View
                                 </button>
+                                <button onClick={() => {setIsAddUserModalOpen(true); setModalClassroom(classroom);}}>Add Mentor</button>
                             </div>
                         </div>
                         <div id='card-right-content-container'>
                             <DashboardDisplayCodeModal code={classroom.code} />
                             <div id='divider' />
                             <div id='student-number-container'>
-                            {/*} <h1 id='number'>{classroom.students.length}</h1>*/}
+                                {/*<h1 id='number'>{classroom.students.length}</h1>*/}
                             <p id='label'>Students</p>
                         </div>
                     </div>

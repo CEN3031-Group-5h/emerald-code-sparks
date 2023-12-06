@@ -102,11 +102,11 @@ export default function Admin() {
     function teacherTileClick() {
         alert("you clicked the teacher tile! functionality coming soon!");
     }
-
+*/
     if  (value.role !=  "Admin") {
         return "Unauthorized";
     }
-*/
+
     return (
         <div className='container nav-padding'>
             <NavBar />

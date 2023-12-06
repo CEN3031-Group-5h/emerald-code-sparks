@@ -772,6 +772,17 @@ export const createClassroom = async (id, title) =>
         error: 'Unable to create new classroom',
     });
 
+export const updateClassroomMentors = async (id, mentors) =>
+    makeRequest({
+        method: PUT,
+        path: `${server}/classrooms/${id}`,
+        auth: true,
+        data: {
+            mentors: mentors
+        },
+        error: 'Unable to update mentors',
+    });
+
     export const submitLessonData = async (
       title,
       standards,

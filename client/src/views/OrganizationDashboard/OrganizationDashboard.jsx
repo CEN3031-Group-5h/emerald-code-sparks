@@ -36,7 +36,7 @@ export default function OrganizationDashboard() {
     });
   }, [orgId]);  // Add orgId to the dependency array
   const handleBack = () => {
-    navigate('/admin');
+    navigate(-1);
   };
 
   const [searchParams, setSearchParams] = useSearchParams();

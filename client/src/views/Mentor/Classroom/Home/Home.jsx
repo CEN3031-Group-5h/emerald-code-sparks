@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Home.less';
+import {Route, Link, Routes, useNavigate} from "react-router-dom";
 import {
   getClassroom,
   getLessonModule,
@@ -10,7 +11,6 @@ import DisplayCodeModal from './DisplayCodeModal';
 import MentorActivityDetailModal from './MentorActivityDetailModal';
 import LessonModuleModal from './LessonModuleSelect/LessonModuleModal';
 import { message, Tag } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
 export default function Home({ classroomId, viewing }) {
   const [classroom, setClassroom] = useState({});
@@ -69,9 +69,9 @@ export default function Home({ classroomId, viewing }) {
     navigate('/sandbox');
   };
 
-  const handleBack = () => {
-    navigate('/dashboard');
-  };
+  //const handleBack = () => {
+    //navigate('/dashboard');
+  //};
 
   const color = [
     'magenta',
@@ -87,9 +87,12 @@ export default function Home({ classroomId, viewing }) {
     'lime',
   ];
 
+  const goBack = () => {
+    navigate(-1);
+  }
   return (
     <div>
-      <button id='home-back-btn' onClick={handleBack}>
+      <button id='home-back-btn' onClick={goBack}>
         <i className='fa fa-arrow-left' aria-hidden='true' />
       </button>
       <DisplayCodeModal code={classroom.code} />

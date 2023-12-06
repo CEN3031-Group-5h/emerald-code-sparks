@@ -26,8 +26,8 @@ export default function OrganizationDashboard() {
 
   async function isVerified(orgId) {
     let org = await getOrg(orgId);
-    console.log("ran function")
-    return org.data.users.map((user) => user.id).includes(value.id);
+    console.log("ran function");
+    return (value.role === 'Admin') && (org.data.users.map((user) => user.id).includes(value.id));
   }
 
   useEffect(() => {

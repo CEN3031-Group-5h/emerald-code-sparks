@@ -55,22 +55,6 @@ export default function OrganizationClasses(props) {
         let classroomIds = [];
         let id = props.id;
         getClasses(id);
-        
-       /*getOrg(props.id).then((res) => {
-            if (res.data) {
-                 res.data.classrooms.forEach((classroom) => {
-                  classroomIds.push(classroom.id);
-                });
-                    getClassrooms(classroomIds).then((classrooms) => {
-                    setClassrooms(classrooms);
-                });
-                setOrg(res.data);
-                console.log(org);
-                console.log(res.data);
-            } else {
-                message.error(res.err);
-            }
-        });*/
     }, []);
 
     useEffect(() => {
@@ -111,14 +95,14 @@ export default function OrganizationClasses(props) {
                                 <button onClick={() => handleViewClassroom(classroom.id)}>
                                 View
                                 </button>
-                                <button onClick={() => {setIsAddUserModalOpen(true); setModalClassroom(classroom);}}>Test button of magic</button>
+                                <button onClick={() => {setIsAddUserModalOpen(true); setModalClassroom(classroom);}}>Add Mentor</button>
                             </div>
                         </div>
                         <div id='card-right-content-container'>
                             <DashboardDisplayCodeModal code={classroom.code} />
                             <div id='divider' />
                             <div id='student-number-container'>
-                            {/*} <h1 id='number'>{classroom.students.length}</h1>*/}
+                                {/*<h1 id='number'>{classroom.students.length}</h1>*/}
                             <p id='label'>Students</p>
                         </div>
                     </div>

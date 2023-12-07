@@ -1,3 +1,5 @@
+//we don't use this page. can remove it.
+
 import React, { useState } from 'react';
 import '../../Moderation/Moderation.css';
 

@@ -7,10 +7,10 @@ import { useGlobalState } from '../../Utils/userState';
 import { getOrg} from '../../Utils/requests';
 import NonOrgMember from './OrganizationNonMember';
 import './OrganizationDashboard.less';
-import OrganizationDashSideBar from './OrgDashboardSidebar';
-import OrganizationHome from './DashboardPages/Home';
+//import OrganizationDashSideBar from './OrgDashboardSidebar'; //not used
+//import OrganizationHome from './DashboardPages/Home'; //not used
 import OrganizationUsers from './DashboardPages/Users';
-import OrganizationModeration from './DashboardPages/Moderation/Moderation';
+//import OrganizationModeration from './DashboardPages/Moderation/Moderation'; //not used
 import OrganizationClasses from './DashboardPages/Classes';
 import OrganizationLessons from './DashboardPages/Lessons';
 import {useSearchParams, useParams, useNavigate} from 'react-router-dom';

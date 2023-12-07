@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Admin.less";
-//import { message } from 'antd';
 import NavBar from "../../components/NavBar/NavBar";
-import LessonModal from "../../components/LessonModal/LessonModal";
-import TeacherModal from "../../components/TeacherModal/TeacherModal";
 import OrganizationModal from "../../components/OrganizationModal/OrganizationModal";
 import { useGlobalState} from "../../Utils/userState";
 import { useNavigate } from 'react-router-dom';
@@ -60,49 +57,6 @@ export default function Admin() {
         }
     }
 
-/*
-//Lesson stuff
-    //click on create lesson button
-
-    const lessonCreateClick = () => {
-        setIsLessonModalOpen(true);
-    };
-
-    const closeLessonModal = () => {
-        setIsLessonModalOpen(false);
-    };
-
-    //click on lesson tile
-    function lessonTileClick(id) {
-        alert("you clicked the lesson tile! functionality coming soon!");
-    }
-
-    //submit data from lesson button
-    const submitLesson = (lessonData) => {
-        console.log(lessonData);
-        closeLessonModal();
-    };
-
-//Teacher stuff
-    //submit data from teacher button
-    const submitTeacherTransfer = (lessonData) => {
-        console.log(lessonData);
-        closeTeacherModal();
-    };
-
-    const closeTeacherModal = () => {
-        setIsTeacherModalOpen(false);
-    }
-
-    const teacherTransferClick = () => {
-        setIsTeacherModalOpen(true);
-    }
-
-    //click on teacher tile
-    function teacherTileClick() {
-        alert("you clicked the teacher tile! functionality coming soon!");
-    }
-*/
     if  (value.role !=  "Admin") {
         return "Unauthorized";
     }

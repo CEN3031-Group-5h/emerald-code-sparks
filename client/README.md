@@ -1,10 +1,20 @@
-# Client
+# Group 5H - Admin Role: Project 12 - Client
+
+This is the readme file for the **client** side of the full-stack CASMM project.
+
+## Table of Contents
+1. [Application Setup](#Application-Setup)
+2. [Project Structure](#Project-Structure)
+3. [Routing](#Routing)
+4. [Styling](#Styling)
+
+## Application Setup
 
 > [React.js](https://reactjs.org/) application which represents the entire browser-side client. File structure is standard for a [create-react-app](https://github.com/facebook/create-react-app) application with some minor changes. Any component which represents an entire page is categorized under the [views](/client/src/views) folder.
 
 <br />
 
-## Setup
+#### Setup
 
 1. Install [Node](https://nodejs.org/en/) and [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable)
 2. Run `yarn` to install project dependencies
@@ -30,20 +40,20 @@ All client routes are handled by react router. The **index.html** file and all s
 
 <br/>
 
-## Available Scripts
+#### Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+##### `yarn start`
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `yarn start-build`
+##### `yarn start-build`
 
-Stars a basic http server (using [http-server](https://www.npmjs.com/package/http-server)) which serves the build folder on [http://localhost:3000](http://localhost:3000) .
+Starts a basic http server (using [http-server](https://www.npmjs.com/package/http-server)) which serves the build folder on [http://localhost:3000](http://localhost:3000) .
 
-### `yarn build`
+##### `yarn build`
 
 Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.

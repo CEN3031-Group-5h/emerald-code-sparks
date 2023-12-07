@@ -4,9 +4,9 @@ This is the readme file for the **server** side of the full-stack CASMM project.
 
 ## Table of Contents
 1. [Application Setup](#Application-Setup)
-2. [API Endpoints](#API-Endpoints-`/api`)
+2. [API Endpoints](#API-Endpoints-/api)
 3. [Strapi Plugins](#Strapi-Plugins)
-4. [Admin Panel](#Admin-Panel-`/admin`)
+4. [Admin Panel](#Admin-Panel-/admin)
 
 ## Application Setup
 

@@ -7,6 +7,7 @@ This is the readme file for the **client** side of the full-stack CASMM project.
 2. [Project Structure](#Project-Structure)
 3. [Routing](#Routing)
 4. [Styling](#Styling)
+5. [Features Implemented](#Features-Implemented)
 
 ## Application Setup
 
@@ -79,3 +80,37 @@ To maintain a consistant theme the folowing has been implemented in `\client\src
 Section on fixing issue where yarn build does not minify: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 Section on code splitting, worth considering at some point: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Features Implemented
+
+#### Admin UI Page
+
+This is the central UI page for admins. It displays their currently active organizations, as well as providing a **+** button for which they can create a new organization. By clicking the **view** button on an organization, the admin can then access three new views: **Classrooms**, **Users**, and **Lessons**.
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413589798211635/Admin_Page.png?ex=65849b77&is=65722677&hm=08429dde8c26912b27ce070bd575c39be2c4df228f2fd95cd9b0962af05123af&=&format=webp&quality=lossless&width=720&height=390" alt="Admin UI View" width="48%">
+    <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413590221819995/Create_Org_Form.png?ex=65849b78&is=65722678&hm=d413a96081fdfc63bf5fa1dd65a7fb899d0dd6fc512abd5a04f27b8a6f8e972e&=&format=webp&quality=lossless&width=720&height=390" alt="Admin UI Add Organization" width="48%">
+</div>
+
+#### Classrooms UI Page
+
+This is the first tab that the admin will be sent to upon clicking **view** on an organization. It displays each class within the organization. There are two buttons provided on each tile: **view** and **add mentor**. This means admins can add teachers to manage a specific classroom, or click view to see more details about the classroom.
+
+<img src="https://media.discordapp.net/attachments/1168945470920466504/1182413590708367501/Org_Manager_Page_Classrooms.png?ex=65849b78&is=65722678&hm=3a58b3f18340ba0289b7e139ba0a80ce5f298fd8cf64a05ee99749df251c4df4&=&format=webp&quality=lossless&width=720&height=391" alt="Classrom UI View" width="96%">
+
+#### Users UI Page
+
+This is the second tab that the admin can navigate to upon clicking **view** on an organization. It displays each user within the organization. Admins can add users to the organization by typing in their email to the add user form. If the user's email does not exist as an authorized user within the CASMM system, then the submit button will prompt an error message informing the admin that the user cannot be added. Otherwise, the user will be added to the user UI table upon submission.
+
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413591186526218/Org_Manager_Users_Page.png?ex=65849b78&is=65722678&hm=40242c1a5579bb75eeaaf9c9bb5aef528a8e36390c6b3ebf9aef133ee708c32b&=&format=webp&quality=lossless&width=720&height=389" alt="User UI View" width="48%">
+    <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413591555608687/Org_Manager_Add_User_Form.png?ex=65849b78&is=65722678&hm=ebfa5278b4f33c93fe4fdbb81ac71f3f1c1dda8a2ef6badea6dab050fdfe4817&=&format=webp&quality=lossless&width=720&height=330" alt="User UI Add User" width="48%">
+</div>
+
+#### Lessons UI Page
+
+The third and final tab that the admin can navigate to upon clicking **view** on an organization is the lessons UI page. This page shows each lesson plan created within the organization. It also provides admins with an easy-to-use lesson plan creator. This form can only be submitted if every form is filled and will provide admins with notifications indicating empty fields. The lesson will then be added live, without the need to refresh the page, to the lesson plans. Additionally, the lessons will be added to the backend upon creation.
+
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413592138625024/Org_Manager_Lessons_Page.png?ex=65849b78&is=65722678&hm=a4b9e165be5bc0f5d760a392ddc876e518e125b4a42006525504e1ad28c56500&=&format=webp&quality=lossless&width=720&height=390" alt="Lesson UI View" width="48%">
+    <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413592738402464/Org_Manager_Lessons_Form.png?ex=65849b78&is=65722678&hm=5e3021c8f32afa3fc6317586273f20c760cf7fada275b1260b27277d69217e19&=&format=webp&quality=lossless&width=720&height=361" alt="Lesson UI Add Lesson" width="48%">
+</div>

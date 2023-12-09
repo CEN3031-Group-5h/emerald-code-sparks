@@ -7,7 +7,8 @@ This is the readme file for the **client** side of the full-stack CASMM project.
 2. [Project Structure](#Project-Structure)
 3. [Routing](#Routing)
 4. [Styling](#Styling)
-5. [Features Implemented](#Features-Implemented)
+5. [Project Directory Guide](#Project-Directory-Guide)
+6. [Features Implemented](#Features-Implemented)
 
 ## Application Setup
 
@@ -80,6 +81,10 @@ To maintain a consistant theme the folowing has been implemented in `\client\src
 Section on fixing issue where yarn build does not minify: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 Section on code splitting, worth considering at some point: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Project Directory Guide
+
+---- Coming Soon ----
 
 ### Features Implemented
 

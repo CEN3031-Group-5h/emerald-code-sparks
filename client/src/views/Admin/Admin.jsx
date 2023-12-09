@@ -29,8 +29,8 @@ export default function Admin() {
         setIsOrganizationModalOpen(false);
     }
 
-    //extremely ugly workaround since getUserOrgs doesn't work; instead of querying user's orgs, looks at all orgs and filters for user
-    //(filtering in the query itself also didn't work)
+    //inefficient workaround to avoid error with getting user orgs directly; instead of querying user's orgs, looks at all orgs and filters for user
+    //(filtering in the query itself also didn't work, potentially a fixable problem)
     async function getOrgs() {
         let orgs = await getAllOrgs();
         let userorgs = orgs.data.filter((org) => org.users.filter((user) => user.id === value.id).length > 0);

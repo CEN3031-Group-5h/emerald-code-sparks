@@ -30,13 +30,13 @@ export const getCurrUser = () => {
     };
   }
   //added admin role
+  //(name returns username instead of role)
   else if (result.role.type === 'admin') {
     return {
       role: 'Admin',
       name: result.username,
       id: result.id,
       email: result.email,
-      //org: result.org,
     };
   }
 

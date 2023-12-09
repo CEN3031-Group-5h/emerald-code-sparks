@@ -24,9 +24,9 @@ export default function OrganizationDashboard() {
   const { orgId } = useParams();
   const navigate = useNavigate();
 
+  //checks if user belongs to org
   async function isVerified(orgId) {
     let org = await getOrg(orgId);
-    console.log("ran function");
     return (value.role === 'Admin') && (org.data.users.map((user) => user.id).includes(value.id));
   }
 
@@ -35,6 +35,8 @@ export default function OrganizationDashboard() {
       setVerify(verified);
     });
   }, [orgId]);  // Add orgId to the dependency array
+
+  
   const handleBack = () => {
     navigate(-1);
   };

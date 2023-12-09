@@ -2,7 +2,9 @@
 // Check if the current user belongs to this classroom
 //
 module.exports = async (ctx, next) => {
-  //TEMPORARY FIX TO AVOID BOTTLENECKING GROUP
+
+  //IMPORTANT: TEMPORARY FIX TO AVOID BOTTLENECKING GROUP; here, any admin belongs to any classroom, much like a researcher
+  //Should be fixed if you don't want admins to have API access to classrooms that are not a part of their organization
   if (ctx.state.user && ctx.state.user.role.name === 'Admin') {
     return await next();
   }

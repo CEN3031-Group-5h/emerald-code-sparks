@@ -8,7 +8,7 @@ import DashboardDisplayCodeModal from '../../Mentor/Dashboard/DashboardDisplayCo
 import MentorSubHeader from '../../../components/MentorSubHeader/MentorSubHeader';
 import NavBar from '../../../components/NavBar/NavBar';
 import { useNavigate, useParams } from 'react-router-dom';
-import AddUserModal from "../../../components/AddUserModal/AddUserModal";
+import AddUserModal from "../../../components/AddUserModal/AddUserModal";    //reused modal form for adding users; could be replaced with a new form specific to mentors
 //import { org } from '../Home';
 
 export default function OrganizationClasses(props) {
@@ -19,10 +19,9 @@ export default function OrganizationClasses(props) {
     const newName = useRef();
     const newId = useRef();
     const [modalClassroom, setModalClassroom] = useState({});
-    const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
+    const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false); 
 
     async function getClasses(id) {
-        //let classes = await getOrgClasses(props.id);
         let org = await getOrg(id);
         let classes = org.data.classrooms;
         console.log("hi", classes);

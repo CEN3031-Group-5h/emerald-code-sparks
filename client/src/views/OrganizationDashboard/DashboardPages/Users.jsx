@@ -36,7 +36,7 @@ export default function OrganizationUsers(props) {
     let classroomIds = [];
     const map = async () => {
       let roles = await getRoles();
-      let map = new Map(await roles.data.roles.map((role) => [role.id, role.name]));
+      let map = new Map(await roles.data.roles.map((role) => [role.id, role.name])); // maps role IDs to the actual role names
       setRoleMap(map);
     }
     map();

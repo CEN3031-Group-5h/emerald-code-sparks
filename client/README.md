@@ -49,6 +49,7 @@ In the project directory, you can run:
 ##### `yarn start`
 
 Runs the app in the development mode.
+However, ensure terminal location is in client prior to entering the 'yarn start' command(use command cd client)
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ##### `yarn start-build`
@@ -59,6 +60,9 @@ Starts a basic http server (using [http-server](https://www.npmjs.com/package/ht
 
 Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
+
+#### 'docker compose up'
+Reads the docker-compose.yml file, and starts all services defined in this file. Essentially enables the connection to the backend. 
 
 <br />
 
@@ -90,7 +94,7 @@ Section on code splitting, worth considering at some point: https://facebook.git
 
 #### Admin UI Page
 
-This is the central UI page for admins. It displays their currently active organizations, as well as providing a **+** button for which they can create a new organization. By clicking the **view** button on an organization, the admin can then access three new views: **Classrooms**, **Users**, and **Lessons**.
+This is the central UI page for admins. It displays their currently active organizations with their attributes ( # of members and classes), as well as providing a **+** button for which they can create a new organization. When the **+** is clicked, it renders a pop-up form where the client is prompted to enter in the name of the organization they would like to create. By clicking the **view** button on an organization, the admin can then access three new views: **Classrooms**, **Users**, and **Lessons**.
 <div style="display: flex; justify-content: space-between;">
     <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413589798211635/Admin_Page.png?ex=65849b77&is=65722677&hm=08429dde8c26912b27ce070bd575c39be2c4df228f2fd95cd9b0962af05123af&=&format=webp&quality=lossless&width=720&height=390" alt="Admin UI View" width="48%">
     <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413590221819995/Create_Org_Form.png?ex=65849b78&is=65722678&hm=d413a96081fdfc63bf5fa1dd65a7fb899d0dd6fc512abd5a04f27b8a6f8e972e&=&format=webp&quality=lossless&width=720&height=390" alt="Admin UI Add Organization" width="48%">
@@ -98,7 +102,7 @@ This is the central UI page for admins. It displays their currently active organ
 
 #### Classrooms UI Page
 
-This is the first tab that the admin will be sent to upon clicking **view** on an organization. It displays each class within the organization. There are two buttons provided on each tile: **view** and **add mentor**. This means admins can add teachers to manage a specific classroom, or click view to see more details about the classroom.
+This is the first tab that the admin will be sent to upon clicking **view** on an organization. It displays each class within the organization, the classroom's join code, and # of students (note, the # of students is currently not showing up due to a bug). There are two buttons provided on each tile: **view** and **add mentor**. This means admins can add teachers to manage a specific classroom, or click view to see more details about the classroom.
 
 <img src="https://media.discordapp.net/attachments/1168945470920466504/1182413590708367501/Org_Manager_Page_Classrooms.png?ex=65849b78&is=65722678&hm=3a58b3f18340ba0289b7e139ba0a80ce5f298fd8cf64a05ee99749df251c4df4&=&format=webp&quality=lossless&width=720&height=391" alt="Classrom UI View" width="96%">
 

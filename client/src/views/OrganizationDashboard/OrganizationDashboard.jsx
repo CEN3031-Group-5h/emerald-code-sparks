@@ -15,16 +15,17 @@ import OrganizationClasses from './DashboardPages/Classes';
 import OrganizationLessons from './DashboardPages/Lessons';
 import {useSearchParams, useParams, useNavigate} from 'react-router-dom';
 
-
+//separating the tabs for later use in rendering
 const { TabPane } = Tabs;
 export default function OrganizationDashboard() {
 
-  const [value] = useGlobalState('currUser');
+  //state and hookis initiallization
+  const [value] = useGlobalState('currUser'); 
   const [verify, setVerify] = useState(false);
   const { orgId } = useParams();
   const navigate = useNavigate();
 
-  //checks if user belongs to org
+  //checks if the current user is an admin or member of the current org
   async function isVerified(orgId) {
     let org = await getOrg(orgId);
     return (value.role === 'Admin') && (org.data.users.map((user) => user.id).includes(value.id));
@@ -36,7 +37,7 @@ export default function OrganizationDashboard() {
     });
   }, [orgId]);  // Add orgId to the dependency array
 
-  
+  // function to handle navigation to previous page
   const handleBack = () => {
     navigate(-1);
   };
@@ -44,6 +45,7 @@ export default function OrganizationDashboard() {
   const [searchParams, setSearchParams] = useSearchParams();
   const tab = searchParams.get('tab');
 
+  //renders page content based on which tab is selected
   function Page(props) {
     return (
     <div className="container nav-padding">
@@ -81,6 +83,6 @@ export default function OrganizationDashboard() {
 
   const renderedPage = <Page id={orgId}/>;
 
-  if (!verify) return <NonOrgMember/>
-  else return renderedPage;
+  if (!verify) return <NonOrgMember/> //if user is not verified, render nonorg component
+  else return renderedPage; //continue with rendering page component
 }

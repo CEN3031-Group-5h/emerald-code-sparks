@@ -1,3 +1,5 @@
+//importing all necessary modules/components from react and other libraries 
+
 import React, { useEffect, useRef, useState } from 'react';
 import { getOrgClasses, getClassrooms, updateClassroomMentors, createClassroom, deleteClassroom, getClassroom, getOrgMentors } from '../../../Utils/requests';
 import {getCurrUser, useGlobalState} from '../../../Utils/userState';
@@ -11,7 +13,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import AddUserModal from "../../../components/AddUserModal/AddUserModal";    //reused modal form for adding users; could be replaced with a new form specific to mentors
 //import { org } from '../Home';
 
+//defines the main component for managing the organization classes
 export default function OrganizationClasses(props) {
+    
+    //all useful state hooks
     const [classrooms, setClassrooms] = useState([]);
     const orgUsers = getOrgUsers(props.id);
     const [user] = useGlobalState('currUser');
@@ -21,6 +26,7 @@ export default function OrganizationClasses(props) {
     const [modalClassroom, setModalClassroom] = useState({});
     const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false); 
 
+    //fetches classroom data based on organization id and sets classroom state
     async function getClasses(id) {
         let org = await getOrg(id);
         let classes = org.data.classrooms;
@@ -29,14 +35,16 @@ export default function OrganizationClasses(props) {
         return classes;
     }
 
+    //async function to add mentor to a classroom
     const addMentor = async (classroom, name) => {
         let org = await getOrg(props.id);
         let new_mentor = org.data.mentors.find((m) => m.first_name === name);
-        if (new_mentor === undefined) {
+        if (new_mentor === undefined) { //if mentor is not found, display error msg
             message.error("Mentor not found");
             return false;
         } 
         else {
+            //check if the classroom has ID and update mentors 
             if ("id" in classroom)
             {
                 let mentors = (await getClassroom(classroom.id)).data.mentors;
@@ -50,22 +58,29 @@ export default function OrganizationClasses(props) {
         }
       }
 
+    //hook to fetch classrooms when component mounts or id changes
     useEffect(() => {
         let classroomIds = [];
         let id = props.id;
         getClasses(id);
     }, []);
 
+    //hook to log classroom changes, useful for debugging
     useEffect(() => {
         console.log(classrooms);
     }, [classrooms]);
-    
+
+        //navigates to classroom's page
         const handleViewClassroom = (classroomId) => {
             navigate(`/classroom/${classroomId}`);
         };
+    
+        // handler for deleting a classroom
         const deleteClass = (classroomId) => {
             deleteClassroom(classroomId);
         };
+
+        //this takes care of creating a new classroom using the provide name and id that was given in the form
         function newClassroom() {
             const newClass = {
                 id: newId.current.value,
@@ -74,6 +89,7 @@ export default function OrganizationClasses(props) {
             createClassroom(newClass.id, newClass.name);
         }
 
+        //actual JSX for displaying the OrganizationClasses components
         return (
         <div className='container nav-padding'>
             {/*<NavBar isMentor={true} />*/}
@@ -110,6 +126,7 @@ export default function OrganizationClasses(props) {
         </div>
       </div>
     </div>
+            //code below commented out due to unneeded functionality
            /* <div className='container nav-padding'>
                 <NavBar isMentor={true} />
                 <div id='main-header'>Hello {user.name}</div>

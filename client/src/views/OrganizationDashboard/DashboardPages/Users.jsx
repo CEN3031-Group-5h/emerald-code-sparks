@@ -1,3 +1,4 @@
+//importing necessary hooks 
 import React, { useEffect, useState } from 'react';
 import { getToken } from '../../../Utils/AuthRequests';
 import { getOrgUsers, getOrg, getRoles, getOrgMentors, updateOrganizationUsers, getUsers} from "../../../Utils/requests";
@@ -5,33 +6,39 @@ import { message } from 'antd';
 import AddUserModal from "../../../components/AddUserModal/AddUserModal";
 import './Users.less';
 
+//component for managing the organization's users
 export default function OrganizationUsers(props) {
   const [org, setOrg] = useState({});
   const [rolemap, setRoleMap] = useState(new Map());
   const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
 
+  //function to add a new user to the organization
   async function addUser(email){
 
     let users = (await getUsers()).data;
     let user = users.filter((data) => data.email === email);
 
+    //handling the event in which no user if found 
     if (user.length === 0) {
       message.error("No users found with this email");
       return false;
     }
 
+    //checking if the user is already a part of the organization
     let orgUsers = (await getOrg(props.id)).data.users;
     if (orgUsers.map((data) => data.email).includes(user[0].email)) {
       message.error("User already a part of organization");
       return false;
     }
-    orgUsers.push(user[0]);
 
+    //adding the user to the organization
+    orgUsers.push(user[0]);
     let res = await updateOrganizationUsers(props.id, orgUsers);
     setOrg((await getOrg(props.id)).data);
     return true;
   }
 
+  //hook to fetch data about the organization and roles on component mount
   useEffect(() => {
     let classroomIds = [];
     const map = async () => {
@@ -52,10 +59,13 @@ export default function OrganizationUsers(props) {
     });
   }, []);
 
+  //handling event in which organization data has not yet been loaded
   if (!('Name' in org)) {
     return <div id="main-header">Welcome to Loading</div>;
   }
   console.log(org.users)
+  
+  //actual JSX for rendering the users components 
   return (<div>
     <div id='main-header' className='welcome-message'>Welcome to {org.Name} Users</div>
     <button className='addUserButton' onClick={() => setIsAddUserModalOpen(true)}>

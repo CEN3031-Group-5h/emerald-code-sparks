@@ -4,7 +4,7 @@ import { getLessonData, submitLessonData } from '../../../Utils/requests';
 import LessonCard from './LessonCard';
 import './Lessons.less';
 
-
+//main functional component for lesson forms
 function LessonForm() {
     const { orgId } = useParams();
     const [lessonData,setLessonData] = useState([])
@@ -18,6 +18,7 @@ function LessonForm() {
         arduinoMaterials: '',}
         );
 
+    //hook to fetch lesson data on component mount after every submission
       useEffect(() => {
         const getLData = async () => {
           try {
@@ -32,9 +33,9 @@ function LessonForm() {
         getLData();
       }, [submit]);
 
-      console.log(lessonData)
+      console.log(lessonData) //logging lesson data, good for debugging
 
-      
+      //handler for any form field changes
       const handleChange = (e) => {
         const { name, value } = e.target;
         
@@ -43,9 +44,10 @@ function LessonForm() {
             [name]: value
           }));
       };
-
+    
+      //handler for form submissions
       const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); //prevents the form from being submitted by default
         
         const { title, standards, description, classroomMaterials, studentMaterials, arduinoMaterials } = lesson;
         
@@ -64,7 +66,8 @@ function LessonForm() {
         } catch (error) {
           console.error('Error submitting lesson:', error);
         }
-      
+
+          //resetting the form fields to blanks after submission
         setLesson({
           title: '',
           standards: '',
@@ -74,7 +77,8 @@ function LessonForm() {
           arduinoMaterials: '',
         })
       };
-      
+
+    //function to update the lesson data
       const updateLessonData = async () => {
         try {
           let lData = await getLessonData();
@@ -85,11 +89,11 @@ function LessonForm() {
         }
       }
 
-      console.log(lessonData)
+      console.log(lessonData) //logging updated lesson data
       
 
 
-      
+      //actual jsx for displaying the LessonForm component
   return (
     <>
       <h1 id="main-header" >Lesson Plans</h1>

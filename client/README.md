@@ -16,12 +16,18 @@ This is the readme file for the **client** side of the full-stack CASMM project.
 
 <br />
 
+#### Prerequisites
+
+Before you begin the setup process, ensure you have the following prerequisites in place. This will ensure you can smoothly perform the setup process as well as troubleshoot any issues thay may come up. 
+1. Have basic understanding of HTML, CSS (.less), React.js, & Node.js
+2. Have basic understanding of git in the event you wish to clone the repository
+
 #### Setup
 
-1. Install [Node](https://nodejs.org/en/) and [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable)
-2. Run `yarn` to install project dependencies
-3. Run `yarn start` to startup the client (please note that much of the functionality will not work without also starting up the backend services)
-4. Navigate to chrome://flags/ and enable the #enable-experimental-web-platform-features flag (This will provide your browser access to serial ports)
+1. Install [Node](https://nodejs.org/en/) and [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable). To verify the installations were successful, you can run the 'node -v' and 'yarn --version' commands in your command line interface
+3. Run `yarn` to install project dependencies
+4. Run `yarn start` to startup the client (please note that much of the functionality will not work without also starting up the backend services)
+5. Navigate to chrome://flags/ and enable the #enable-experimental-web-platform-features flag (This will provide your browser access to serial ports)
 
 <br />
 
@@ -63,6 +69,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 #### 'docker compose up'
 Reads the docker-compose.yml file, and starts all services defined in this file. Essentially enables the connection to the backend. 
+
+#### Admin sign-in details
+To begin using the application, you must sign in as admin. Admin sign-in credentials are as follows:
+Username = AdminTest, Password = easypassword
 
 <br />
 

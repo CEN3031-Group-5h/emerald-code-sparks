@@ -98,7 +98,18 @@ Section on code splitting, worth considering at some point: https://facebook.git
 
 ### Project Directory Guide
 
----- Coming Soon ----
+| Directory | Explanation |
+|----------|----------|
+| ../public  | Contains libraries and symbols/icons used within the project.  |
+| ../public/images  | Contains symbols/icons used within the project.  |
+| ../public/lib  | Contains libraries used within the code. For more info there is a readme file in the lib directory.  |
+| ../src  | Contains all source code for the project, as well as pictures and diagrams used within the project.  |
+| ../src/utils  | Contains custom hooks, functions for api calls, and other various exported functions used within the project.  |
+| ../src/assets  | Contains images and diagrams used within the project.  |
+| ../src/components  | Contains reusable "building blocks" for the project.  |
+| ../src/views  | Contains all the views for the project. i.e. UIs, dashboard, login screens, etc.  |
+
+
 
 ### Features Implemented
 

@@ -107,6 +107,8 @@ Section on code splitting, worth considering at some point: https://facebook.git
 | ../src/assets  | Contains images and diagrams used within the project.  |
 | ../src/components  | Contains reusable "building blocks" for the project.  |
 | ../src/views  | Contains all the views for the project. i.e. UIs, dashboard, login screens, etc.  |
+| ../src/views/Admin  | This contains code for the admin component where mentors/teachers can see and add organizations  |
+| ../src/views/Dashboard  | This contains code for the dashboard component where mentors/teachers can view/manage classrooms within the platform.  |
 
 
 

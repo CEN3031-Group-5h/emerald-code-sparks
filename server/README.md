@@ -1,27 +1,37 @@
-# Server
+# Group 5H - Admin Role: Project 12 - Server
+
+This is the readme file for the **server** side of the full-stack CASMM project.
+
+## Table of Contents
+1. [Application Setup](#Application-Setup)
+2. [API Endpoints](#API-Endpoints-api)
+3. [Strapi Plugins](#Strapi-Plugins)
+4. [Admin Panel](#Admin-Panel-admin)
+
+## Application Setup
 
 > Web server and application server that will serve static content and dynamic content over HTTP. It is powered by [Node](https://nodejs.org/en/), [Strapi](https://strapi.io/documentation/v3.x/getting-started/introduction.html), and [PostgreSQL](https://www.postgresql.org/). The file structure is defined by Strapi and is documented [here](https://docs-v3.strapi.io/developer-docs/latest/setup-deployment-guides/file-structure.html).
 
 <br/>
 
-## Setup
+#### Setup
 
 `server` depends on other services and must be run with the rest of the application. See the project [development](../README.md#development) setup for instructions.
 
 <br/>
 
-## Available scripts
+#### Available scripts
 
 * `yarn build-client` - Build client and add it to the public folder
 * `yarn build` - Build the strapi admin panel
 
 <br/>
 
-## Static Assets
+#### Static Assets
 
 All assets in the **public** directory will be served. The specifics are defined [here](https://docs-v3.strapi.io/developer-docs/latest/setup-deployment-guides/configurations.html#public-assets).
 
-### Client
+#### Client
 
 > When Docker builds the production container, it builds client and adds it to **public/client**
 
